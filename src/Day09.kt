@@ -3,18 +3,18 @@ import kotlin.math.sqrt
 import kotlin.math.pow
 
 fun main() {
-    fun euclidienne(x_H: Int, y_H: Int, x_T: Int, y_T: Int): Float {
-        return sqrt((x_H - x_T).toFloat().pow(2) + (y_H - y_T).toFloat().pow(2))
+    fun euclidienne(xH: Int, yH: Int, xT: Int, yT: Int): Float {
+        return sqrt((xH - xT).toFloat().pow(2) + (yH - yT).toFloat().pow(2))
     }
 
     fun solution(input: List<String>, nombreDeNoeuds: Int): Int {
 
-        val liste = mutableSetOf<position_occupee>()
+        val liste = mutableSetOf<positionOccupee>()
 
-        var posx = Array(nombreDeNoeuds) { 0 }
-        var posy = Array(nombreDeNoeuds) { 0 }
+        val posx = Array(nombreDeNoeuds) { 0 }
+        val posy = Array(nombreDeNoeuds) { 0 }
 
-        liste.add(position_occupee(posx[nombreDeNoeuds - 1], posy[nombreDeNoeuds - 1]))
+        liste.add(positionOccupee(posx[nombreDeNoeuds - 1], posy[nombreDeNoeuds - 1]))
 
         input.forEach { ligne ->
             val direction = ligne.substring(0, 1)
@@ -46,7 +46,7 @@ fun main() {
                     }
                 }
 
-                liste.add(position_occupee(posx[nombreDeNoeuds - 1], posy[nombreDeNoeuds - 1]))
+                liste.add(positionOccupee(posx[nombreDeNoeuds - 1], posy[nombreDeNoeuds - 1]))
             }
         }
         return liste.size
@@ -66,4 +66,4 @@ fun main() {
 }
 
 
-data class position_occupee(val x: Int, val y: Int)
+data class positionOccupee(val x: Int, val y: Int)
